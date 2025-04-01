@@ -14,7 +14,7 @@ class ProductPage(BasePage):
         return self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
 
     def checking_the_product_name_in_the_message(self, product_name):
-        assert product_name in self.browser.find_element(*ProductPageLocators.MESSAGE_ADD_TO_CART).text
+        assert product_name == self.browser.find_element(*ProductPageLocators.MESSAGE_ADD_TO_CART).text
 
     def checking_the_price_sale_in_the_message(self, price):
-        assert price in self.browser.find_element(*ProductPageLocators.MESSAGE_PRICE_SALE).text
+        assert price == self.browser.find_element(*ProductPageLocators.MESSAGE_PRICE_SALE).text

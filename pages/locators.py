@@ -34,7 +34,7 @@ class ProductPageLocators():
     PRODUCT_PRICE = (By.XPATH, "//p[@class = 'price_color']")
 
     #Сообщение о том что товар добавлен в корзину
-    MESSAGE_ADD_TO_CART = (By.XPATH, "//*[@id='messages']/div[1]/div")
+    MESSAGE_ADD_TO_CART = (By.XPATH, "//*[@id='messages']/div[1]/div/strong")
 
     #Сообщение о скидке
-    MESSAGE_PRICE_SALE = (By.XPATH, "//*[@id='messages']/div[3]/div/p[1]")
+    MESSAGE_PRICE_SALE = (By.XPATH, "//*[@id='messages']/div[3]/div/p[1]/strong")
