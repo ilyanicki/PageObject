@@ -21,3 +21,20 @@ class LoginPageLocators():
     SIGN_IN_PASSWORD = (By.XPATH, "//input[@id='id_login-password']") # Поле "Пароль" в форме "Войти"
 
     SIGN_IN_BUTTON = (By.XPATH, "//button[@name='login_submit']") # Кнопка "Войти" в форме "Войти"
+
+class ProductPageLocators():
+
+    #Селектор кнопки добавления в корзину
+    ADD_TO_CART_BUTTON = (By.XPATH, "//button[@class='btn btn-lg btn-primary btn-add-to-basket']")
+
+    #Селектор названия товара
+    PRODUCT_NAME = (By.CSS_SELECTOR, "div.col-sm-6:nth-child(2) > h1:nth-child(1)")
+
+    #Селектор цены товара
+    PRODUCT_PRICE = (By.XPATH, "//p[@class = 'price_color']")
+
+    #Сообщение о том что товар добавлен в корзину
+    MESSAGE_ADD_TO_CART = (By.XPATH, "//*[@id='messages']/div[1]/div")
+
+    #Сообщение о скидке
+    MESSAGE_PRICE_SALE = (By.XPATH, "//*[@id='messages']/div[3]/div/p[1]")
