@@ -18,3 +18,11 @@ class ProductPage(BasePage):
 
     def checking_the_price_sale_in_the_message(self, price):
         assert price == self.browser.find_element(*ProductPageLocators.MESSAGE_PRICE_SALE).text
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.MESSAGE_ADD_TO_CART), \
+            "Success message is presented, but should not be"
+
+    def should_disappear_message(self):
+        assert self.is_disappeared(*ProductPageLocators.MESSAGE_ADD_TO_CART), \
+            "success message not disappear"
