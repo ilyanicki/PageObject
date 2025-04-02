@@ -2,6 +2,7 @@ from selenium.webdriver.common.by import By
 
 class BasePageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
+    VIEW_BASKET = (By.XPATH, "//a[@class='btn btn-default']")
 
 class LoginPageLocators():
 
@@ -38,3 +39,11 @@ class ProductPageLocators():
 
     #Сообщение о скидке
     MESSAGE_PRICE_SALE = (By.XPATH, "//*[@id='messages']/div[3]/div/p[1]/strong")
+
+class BasketPageLocators():
+
+    #Селектор формы товаров в корзине
+    BASKET_FORM_SET = (By.XPATH,"//form[@id='basket_formset']")
+
+    #Ceлектор сообщения о постой корзине
+    BASKET_IS_EMPTY_MESSAGE = (By.CSS_SELECTOR, "#content_inner > p")
