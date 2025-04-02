@@ -1,4 +1,4 @@
-from pages.main_page import MainPage
+from .pages.main_page import MainPage
 from .pages.login_page import LoginPage
 
 def test_should_be_login_url(browser):

@@ -1,4 +1,5 @@
 import pytest
+from faker import Faker
 from .pages.login_page import LoginPage
 from .pages.product_page import ProductPage
 from .pages.basket_page import BasketPage
@@ -69,4 +70,40 @@ def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
     basket_page = BasketPage(browser, browser.current_url)
     basket_page.not_should_be_products()
     basket_page.should_message_basket_is_empty()
+
+@pytest.mark.login
+class TestUserAddToBasketFromProductPage():
+    @pytest.fixture(scope="function", autouse=True)
+    def setup(self, browser):
+        browser.implicitly_wait(5)
+        link = "https://selenium1py.pythonanywhere.com/accounts/login/"
+        page = LoginPage(browser, link)
+        page.open()
+        fake = Faker()
+        email_value = fake.email()
+        password_value = fake.password(length=12)
+        page.register_new_user(email_value, password_value)
+        page.should_be_authorized_user()
+
+    def test_user_cant_see_success_message(self, browser):
+        browser.implicitly_wait(10)
+        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer"
+        page = ProductPage(browser, link)
+        page.open()
+        page.should_not_be_success_message()
+
+    def test_user_can_add_product_to_basket(self,browser):
+        browser.implicitly_wait(10)
+        link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0"
+        page = ProductPage(browser, link)
+        page.open()
+        product_name = page.product_name_text()
+        product_price = page.product_price_text()
+        page.add_to_cart()
+        page.solve_quiz_and_get_code()
+        page.checking_the_product_name_in_the_message(product_name)
+        page.checking_the_price_sale_in_the_message(product_price)
+
+
+
 
